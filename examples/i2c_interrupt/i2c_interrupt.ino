@@ -26,21 +26,21 @@ void setup()
   Dps368PressureSensor.begin(Wire);
   
   //int16_t ret = Dps368PressureSensor.setInterruptPolarity(1);
-  int16_t ret = Dps368PressureSensor.setInterruptSources(1, 0);
+  int16_t ret = Dps368PressureSensor.setInterruptSources(4, 0);
   //clear interrupt flag by reading
   Dps368PressureSensor.getIntStatusFifoFull();
 
   //initialization of Interrupt for Controller unit
   //SDO pin of Dps368 has to be connected with interrupt pin
-  int16_t interruptPin = 3;
+  int16_t interruptPin = 9;
   pinMode(interruptPin, INPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin), onFifoFull, RISING);
 
   //start of a continuous measurement just like before
-  int16_t temp_mr = 3;
+  int16_t temp_mr = 5;
   int16_t temp_osr = 2;
-  int16_t prs_mr = 1;
-  int16_t prs_osr = 3;
+  int16_t prs_mr = 5;
+  int16_t prs_osr = 2;
   ret = Dps368PressureSensor.startMeasureBothCont(temp_mr, temp_osr, prs_mr, prs_osr);
   if (ret != 0)
   {
