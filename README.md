@@ -23,7 +23,7 @@ The [DPS368](https://www.infineon.com/cms/en/product/sensor/barometric-pressure-
 * Temperature accuracy: ± 0.5°C
 * Avg. current consumption: 1.7 µA (pressure measurement@1 Hz sampling rate, standby: 0.5 µA)
 * Integrated FIFO
-* Interface: I2C and SPI (both with optional interrupt)
+* Interface: I2C and SPI (I2C with optional interrupt)
 
 ### Benefits
 
