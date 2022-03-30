@@ -1,19 +1,15 @@
 # DPS3xx Digital Pressure Sensor 
 
-
 <img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS310_PP.jpg" width=150><img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS310-Pressure-Shield2Go_Top.png" width=300>
 
 <img src="https://www.infineon.com/export/sites/default/media/products/Small_Signal_Discretes/lowres-DPS368_VLGA-8-2_Combi.tif.png_1864837327.png" width=150><img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS368-Pressure-Shield2Go_Top.jpg" width=300>
-
 
 Library of Infineon's highly sensitive [DPS368 sensor](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) and [DPS310 sensor](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/) for Arduino.
 
 ## Summary
 ## DPS368
-
-The DPS368 is an ultra small waterproof pressure sensor, environmentally protected against water (IPx8), dust & humidity.
  
-The [DPS368](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) is a miniaturized digital barometric air pressure sensor with ultra-high precision (±2 cm) and a low current consumption, capable of measuring both pressure and temperature. Due to its robust package, it can withstand 50 m under water for one hour (IPx8). The pressure sensor element is based on a capacitive sensing principle which guarantees high precision during temperature changes. The small package (2.0 x 2.5 x 1.1 mm³) makes the DPS3xx ideal for mobile applications and wearable devices. 
+The [DPS368](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) is a miniaturized digital barometric air pressure sensor with ultra-high precision (±2 cm) and a low current consumption, capable of measuring both pressure and temperature. It is is an ultra small waterproof pressure sensor, environmentally protected against water (IPx8), dust & humidity Due to its robust package, it can withstand 50 m under water for one hour (IPx8). The pressure sensor element is based on a capacitive sensing principle which guarantees high precision during temperature changes. The small package (2.0 x 2.5 x 1.1 mm³) makes the DPS3xx ideal for mobile applications and wearable devices. 
 
 ### Summary of Features:
 
@@ -71,7 +67,7 @@ Please download this repository from GitHub by clicking on the above button `Clo
 
 ![Download Library](https://github.com/Infineon/Assets/blob/master/Pictures/Download_Repo.png)
 
-To install the DPS3xx pressure sensor library in the Arduino IDE, please go now to **Sketch** > **Include Library** > **Add .ZIP Library...** in the Arduino IDE and navigate to the downloaded .ZIP file of this repository. The library will be installed in your Arduino sketch folder in libraries and you can select as well as include this one to your project under **Sketch** > **Include Library** > **DPS3xx Barometric Pressure Sensor**.
+To install the DPS3xx pressure sensor library in the Arduino IDE, please go now to **Sketch** > **Include Library** > **Add .ZIP Library...** in the Arduino IDE and navigate to the downloaded .ZIP file of this repository. The library will be installed in your Arduino sketch folder in libraries and you can select as well as include this one to your project under **Sketch** > **Include Library** > **arduino-zensiv-dps3xx**.
 
 ![Install Library](https://raw.githubusercontent.com/infineon/assets/master/Pictures/Library_Install_ZIP.png)
 
@@ -96,7 +92,7 @@ Each sensor can only work either SPI or I2C. To convert from SPI to I2C, for exa
 
 However, every Shield2Go is directly compatible with Infineon's XMC2Go and the recommended quick start is to use an XMC2Go for evaluation. Therefore, please install (if not already done) also the [XMC-for-Arduino](https://github.com/Infineon/XMC-for-Arduino) implementation and choose afterwards **XMC1100 XMC2Go** from the **Tools**>**Board** menu in the Arduino IDE if working with this evaluation board. To use it, please plug the DPS3xx Pressure Shield2Go onto the XMC2Go as shown below.
 
-<img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS3xx_S2Go_w_XMC2Go.jpg" width=250>
+<img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS3xx_S2Go_w_XMC2Go.jpg"width=250>
 
 ### Additional Information
 Please find the datasheet of the DPS368 [here](https://www.infineon.com/dgdl/Infineon-DPS368-DS-v01_00-EN.pdf?fileId=5546d46269e1c019016a0c45105d4b40) and DPS310 [here](https://www.infineon.com/dgdl/Infineon-DPS310-DS-v01_00-EN.pdf?fileId=5546d462576f34750157750826c42242). It depends on the evaluation board which you are using or the respective configuration of the sensor on your PCB which communication protocol as well as addresses you need to use for communicating with the sensor.
