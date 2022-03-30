@@ -92,7 +92,7 @@ Each sensor can only work either SPI or I2C. To convert from SPI to I2C, for exa
 
 However, every Shield2Go is directly compatible with Infineon's XMC2Go and the recommended quick start is to use an XMC2Go for evaluation. Therefore, please install (if not already done) also the [XMC-for-Arduino](https://github.com/Infineon/XMC-for-Arduino) implementation and choose afterwards **XMC1100 XMC2Go** from the **Tools**>**Board** menu in the Arduino IDE if working with this evaluation board. To use it, please plug the DPS3xx Pressure Shield2Go onto the XMC2Go as shown below.
 
-<img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS3xx_S2Go_w_XMC2Go.jpg"width=250>
+<img src ="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310_S2Go_w_XMC2Go.png" width=250>
 
 ### Additional Information
 Please find the datasheet of the DPS368 [here](https://www.infineon.com/dgdl/Infineon-DPS368-DS-v01_00-EN.pdf?fileId=5546d46269e1c019016a0c45105d4b40) and DPS310 [here](https://www.infineon.com/dgdl/Infineon-DPS310-DS-v01_00-EN.pdf?fileId=5546d462576f34750157750826c42242). It depends on the evaluation board which you are using or the respective configuration of the sensor on your PCB which communication protocol as well as addresses you need to use for communicating with the sensor.
