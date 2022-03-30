@@ -7,14 +7,14 @@
 <img src="https://www.infineon.com/export/sites/default/media/products/Small_Signal_Discretes/lowres-DPS368_VLGA-8-2_Combi.tif.png_1864837327.png" width=150><img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS368-Pressure-Shield2Go_Top.jpg" width=300>
 
 
-Library of Infineon's highly sensitive [DPS368 sensor](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) and [DPS310] (https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/) for Arduino.
+Library of Infineon's highly sensitive [DPS368 sensor](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) and [DPS310](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/) for Arduino.
 
 ## Summary
 ## DPS368
 
 The DPS368 is an ultra small waterproof pressure sensor, environmentally protected against water (IPx8), dust & humidity.
  
-The [DPS368] (https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) is a miniaturized digital barometric air pressure sensor with ultra-high precision (±2 cm) and a low current consumption, capable of measuring both pressure and temperature. Due to its robust package, it can withstand 50 m under water for one hour (IPx8). The pressure sensor element is based on a capacitive sensing principle which guarantees high precision during temperature changes. The small package (2.0 x 2.5 x 1.1 mm³) makes the DPS3xx ideal for mobile applications and wearable devices. 
+The [DPS368](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) is a miniaturized digital barometric air pressure sensor with ultra-high precision (±2 cm) and a low current consumption, capable of measuring both pressure and temperature. Due to its robust package, it can withstand 50 m under water for one hour (IPx8). The pressure sensor element is based on a capacitive sensing principle which guarantees high precision during temperature changes. The small package (2.0 x 2.5 x 1.1 mm³) makes the DPS3xx ideal for mobile applications and wearable devices. 
 
 ### Summary of Features:
 
@@ -78,7 +78,7 @@ To install the DPS3xx pressure sensor library in the Arduino IDE, please go now 
 
 ## Usage
 Please see the example sketches in the `/examples` directory in this library to learn more about the usage of the library. Especially, take care of the respective SPI and I²C configuration of the sensor. 
-For more information, please consult the datasheet of DPS368 [here](https://www.infineon.com/dgdl/Infineon-DPS3xx-DS-v01_00-EN.pdf?fileId=5546d46269e1c019016a0c45105d4b40) and DPS310 [here] (https://www.infineon.com/dgdl/Infineon-DPS310-DS-v01_00-EN.pdf?fileId=5546d462576f34750157750826c42242)
+For more information, please consult the datasheet of DPS368 [here](https://www.infineon.com/dgdl/Infineon-DPS3xx-DS-v01_00-EN.pdf?fileId=5546d46269e1c019016a0c45105d4b40) and DPS310 [here](https://www.infineon.com/dgdl/Infineon-DPS310-DS-v01_00-EN.pdf?fileId=5546d462576f34750157750826c42242)
 
 Currently, there exists the DPS3xx Pressure Shield2Go evaluation board as a break out board:
 
