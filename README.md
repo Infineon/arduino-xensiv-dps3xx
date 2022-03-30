@@ -1,6 +1,6 @@
 # DPS3xx Digital Pressure Sensor 
 
-<img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310_PP.jpg" width=150><img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310_PP.jpg" width=300>
+<img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310_PP.jpg" width=150><img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310-Pressure-Shield2Go_Top.png" width=300>
 
 <img src="https://www.infineon.com/export/sites/default/media/products/Small_Signal_Discretes/lowres-DPS368_VLGA-8-2_Combi.tif.png_1864837327.png" width=150><img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS368-Pressure-Shield2Go_Top.jpg" width=300>
 
