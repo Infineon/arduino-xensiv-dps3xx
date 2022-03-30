@@ -1,7 +1,7 @@
-#include <Dps368.h>
+#include <Dps3xx.h>
 
-// Dps368 Opject
-Dps368 Dps368PressureSensor = Dps368();
+// Dps3xx Opject
+Dps3xx Dps3xxPressureSensor = Dps3xx();
 void onFifoFull();
 
 
@@ -10,18 +10,18 @@ void setup()
   Serial.begin(9600);
   while (!Serial);
 
-  //Call begin to initialize Dps368PressureSensor
+  //Call begin to initialize Dps3xxPressureSensor
   //The parameter 0x76 is the bus address. The default address is 0x77 and does not need to be given.
-  //Dps368PressureSensor.begin(Wire, 0x76);
+  //Dps3xxPressureSensor.begin(Wire, 0x76);
   //Use the commented line below instead to use the default I2C address.
   
-  Dps368PressureSensor.begin(Wire); 
-  int16_t val = Dps368PressureSensor.setInterruptSources(4, 0);
+  Dps3xxPressureSensor.begin(Wire); 
+  int16_t val = Dps3xxPressureSensor.setInterruptSources(4, 0);
   //clear interrupt flag by reading
-  Dps368PressureSensor.getIntStatusFifoFull();
+  Dps3xxPressureSensor.getIntStatusFifoFull();
 
   //initialization of Interrupt for Controller unit
-  //SDO pin of Dps368 has to be connected with interrupt pin
+  //SDO pin of Dps3xx has to be connected with interrupt pin
   int16_t interruptPin = 9;
   pinMode(interruptPin, INPUT);
   attachInterrupt(digitalPinToInterrupt(interruptPin), onFifoFull, RISING);
@@ -47,7 +47,7 @@ void setup()
   //High precision and hgh measure rates at the same time are not available.
   //Consult Datasheet (or trial and error) for more information
   
-  int16_t ret = Dps368PressureSensor.startMeasureBothCont(temp_mr, temp_osr, prs_mr, prs_osr);
+  int16_t ret = Dps3xxPressureSensor.startMeasureBothCont(temp_mr, temp_osr, prs_mr, prs_osr);
 
   if (ret != 0)
   {
@@ -67,14 +67,14 @@ void loop()
   uint8_t temperatureCount = 20;
   float temperature[temperatureCount];
  
- int16_t val = Dps368PressureSensor.getIntStatusFifoFull();
+ int16_t val = Dps3xxPressureSensor.getIntStatusFifoFull();
 
 
   //This function writes the results of continuous measurements to the arrays given as parameters
   //The parameters temperatureCount and pressureCount should hold the sizes of the arrays temperature and pressure when the function is called
   //After the end of the function, temperatureCount and pressureCount hold the numbers of values written to the arrays
-  //Note: The Dps368 cannot save more than 32 results. When its result buffer is full, it won't save any new measurement results
- int16_t ret = Dps368PressureSensor.getContResults(temperature, temperatureCount, pressure, pressureCount);
+  //Note: The Dps3xx cannot save more than 32 results. When its result buffer is full, it won't save any new measurement results
+ int16_t ret = Dps3xxPressureSensor.getContResults(temperature, temperatureCount, pressure, pressureCount);
 
  if (ret != 0)
   {
@@ -105,7 +105,7 @@ void loop()
     }
   }
 
-  //Wait some time, so that the Dps368 can refill its buffer
+  //Wait some time, so that the Dps3xx can refill its buffer
   delay(10000);
 }
 
@@ -113,6 +113,6 @@ void onFifoFull()
 {
   //message for debugging
   Serial.println("Interrupt handler called");
-  Dps368PressureSensor.getIntStatusFifoFull();
+  Dps3xxPressureSensor.getIntStatusFifoFull();
 
 }

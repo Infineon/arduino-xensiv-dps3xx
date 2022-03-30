@@ -1,7 +1,7 @@
 /**
- * Arduino library to control Dps310
+ * Arduino library to control Dps3xx
  *
- * "Dps310" represents Infineon's high-sensetive pressure and temperature sensor. 
+ * "Dps3xx" represents Infineon's high-sensetive pressure and temperature sensor. 
  * It measures in ranges of 300 - 1200 hPa and -40 and 85 °C. 
  * The sensor can be connected via SPI or I2C. 
  * It is able to perform single measurements
@@ -44,7 +44,7 @@ class DpsClass
 
 #ifndef DPS_DISABLESPI
 	/**
-	 * SPI begin function for Dps310 with 4-wire SPI
+	 * SPI begin function for Dps3xx with 4-wire SPI
 	 */
 	void begin(SPIClass &bus, int32_t chipSelect);
 #endif
@@ -53,32 +53,32 @@ class DpsClass
 	/**
 	 * Standard SPI begin function
 	 *
-	 * @param &bus: 			SPI bus which connects MC to Dps310
-	 * @param chipSelect: 		Number of the CS line for the Dps310
-	 * @param threeWire: 		1 if Dps310 is connected with 3-wire SPI
-	 * 					0 if Dps310 is connected with 4-wire SPI (standard)
+	 * @param &bus: 			SPI bus which connects MC to Dps3xx
+	 * @param chipSelect: 		Number of the CS line for the Dps3xx
+	 * @param threeWire: 		1 if Dps3xx is connected with 3-wire SPI
+	 * 					0 if Dps3xx is connected with 4-wire SPI (standard)
 	 */
 	void begin(SPIClass &bus, int32_t chipSelect, uint8_t threeWire);
 #endif
 
 	/**
-	 * End function for Dps310
+	 * End function for Dps3xx
 	 * Sets the sensor to idle mode
 	 */
 	void end(void);
 
 	/**
-	 * returns the Product ID of the connected Dps310 sensor
+	 * returns the Product ID of the connected Dps3xx sensor
 	 */
 	uint8_t getProductId(void);
 
 	/**
-	 * returns the Revision ID of the connected Dps310 sensor
+	 * returns the Revision ID of the connected Dps3xx sensor
 	 */
 	uint8_t getRevisionId(void);
 
 	/**
-	 * Sets the Dps310 to standby mode
+	 * Sets the Dps3xx to standby mode
 	 *
 	 * @return		status code
 	 */
@@ -159,8 +159,8 @@ class DpsClass
 
 	/**
 	 * starts a continuous temperature measurement with specified measurement rate and oversampling rate
-	 * If measure rate is n and oversampling rate is m, the DPS310 performs 2^(n+m) internal measurements per second. 
-	 * The DPS310 cannot operate with high precision and high speed at the same time. Consult the datasheet for more information.
+	 * If measure rate is n and oversampling rate is m, the DPS3xx performs 2^(n+m) internal measurements per second. 
+	 * The DPS3xx cannot operate with high precision and high speed at the same time. Consult the datasheet for more information.
 	 * 
 	 * @param measureRate: 		DPS__MEASUREMENT_RATE_1, DPS__MEASUREMENT_RATE_2,DPS__MEASUREMENT_RATE_4 ... DPS__MEASUREMENT_RATE_128
 	 * @param oversamplingRate: 	DPS__OVERSAMPLING_RATE_1, DPS__OVERSAMPLING_RATE_2, DPS__OVERSAMPLING_RATE_4 ... DPS__OVERSAMPLING_RATE_128
@@ -242,7 +242,7 @@ class DpsClass
 	uint8_t m_prsMr;
 	uint8_t m_prsOsr;
 
-	// compensation coefficients for both dps310 and dps422
+	// compensation coefficients for both dps3xx and dps422
 	int32_t m_c00;
 	int32_t m_c10;
 	int32_t m_c01;
@@ -285,7 +285,7 @@ class DpsClass
 	/**
 	 * Sets the Operation Mode of the sensor
 	 * 
-	 * @param opMode: 			the new OpMode as defined by dps::Mode; CMD_BOTH should not be used for DPS310
+	 * @param opMode: 			the new OpMode as defined by dps::Mode; CMD_BOTH should not be used for DPS3xx
 	 * @return 			0 on success, -1 on fail
 	 */
 	int16_t setOpMode(uint8_t opMode);

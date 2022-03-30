@@ -34,7 +34,7 @@ void DpsClass::begin(TwoWire &bus, uint8_t slaveAddress)
 	// Init bus
 	m_i2cbus->begin();
 
-	delay(50); //startup time of Dps310
+	delay(50); //startup time of Dps3xx
 
 	init();
 }
@@ -64,7 +64,7 @@ void DpsClass::begin(SPIClass &bus, int32_t chipSelect, uint8_t threeWire)
 	pinMode(m_chipSelect, OUTPUT);
 	digitalWrite(m_chipSelect, HIGH);
 
-	delay(50); //startup time of Dps310
+	delay(50); //startup time of Dps3xx
 
 	//switch to 3-wire mode if necessary
 	//do not use writeByteBitfield or check option to set SPI mode!
@@ -72,7 +72,7 @@ void DpsClass::begin(SPIClass &bus, int32_t chipSelect, uint8_t threeWire)
 	if (threeWire)
 	{
 		m_threeWire = 1U;
-		if (writeByte(DPS310__REG_ADR_SPI3W, DPS310__REG_CONTENT_SPI3W))
+		if (writeByte(DPS3xx__REG_ADR_SPI3W, DPS3xx__REG_CONTENT_SPI3W))
 		{
 			m_initFail = 1U;
 			return;
@@ -170,7 +170,7 @@ int16_t DpsClass::getSingleResult(float &result)
 	case CMD_PRS: //pressure
 		rdy = readByteBitfield(config_registers[PRS_RDY]);
 		break;
-	default: //DPS310 not in command mode
+	default: //DPS3xx not in command mode
 		return DPS__FAIL_TOOBUSY;
 	}
 	//read new measurement result
@@ -182,7 +182,7 @@ int16_t DpsClass::getSingleResult(float &result)
 		return DPS__FAIL_UNFINISHED;
 	case 1: //measurement ready, expected case
 		Mode oldMode = m_opMode;
-		m_opMode = IDLE; //opcode was automatically reseted by DPS310
+		m_opMode = IDLE; //opcode was automatically reseted by DPS3xx
 		int32_t raw_val;
 		switch (oldMode)
 		{
@@ -217,7 +217,7 @@ int16_t DpsClass::measureTempOnce(float &result, uint8_t oversamplingRate)
 
 	//wait until measurement is finished
 	delay(calcBusyTime(0U, m_tempOsr) / DPS__BUSYTIME_SCALING);
-	delay(DPS310__BUSYTIME_FAILSAFE);
+	delay(DPS3xx__BUSYTIME_FAILSAFE);
 
 	ret = getSingleResult(result);
 	if (ret != DPS__SUCCEEDED)
@@ -274,7 +274,7 @@ int16_t DpsClass::measurePressureOnce(float &result, uint8_t oversamplingRate)
 
 	//wait until measurement is finished
 	delay(calcBusyTime(0U, m_prsOsr) / DPS__BUSYTIME_SCALING);
-	delay(DPS310__BUSYTIME_FAILSAFE);
+	delay(DPS3xx__BUSYTIME_FAILSAFE);
 
 	ret = getSingleResult(result);
 	if (ret != DPS__SUCCEEDED)
@@ -326,7 +326,7 @@ int16_t DpsClass::startMeasureTempCont(uint8_t measureRate, uint8_t oversampling
 		return DPS__FAIL_TOOBUSY;
 	}
 	//abort if speed and precision are too high
-	if (calcBusyTime(measureRate, oversamplingRate) >= DPS310__MAX_BUSYTIME)
+	if (calcBusyTime(measureRate, oversamplingRate) >= DPS3xx__MAX_BUSYTIME)
 	{
 		return DPS__FAIL_UNFINISHED;
 	}
@@ -361,7 +361,7 @@ int16_t DpsClass::startMeasurePressureCont(uint8_t measureRate, uint8_t oversamp
 		return DPS__FAIL_TOOBUSY;
 	}
 	//abort if speed and precision are too high
-	if (calcBusyTime(measureRate, oversamplingRate) >= DPS310__MAX_BUSYTIME)
+	if (calcBusyTime(measureRate, oversamplingRate) >= DPS3xx__MAX_BUSYTIME)
 	{
 		return DPS__FAIL_UNFINISHED;
 	}
@@ -397,7 +397,7 @@ int16_t DpsClass::startMeasureBothCont(uint8_t tempMr,
 		return DPS__FAIL_TOOBUSY;
 	}
 	//abort if speed and precision are too high
-	if (calcBusyTime(tempMr, tempOsr) + calcBusyTime(prsMr, prsOsr) >= DPS310__MAX_BUSYTIME)
+	if (calcBusyTime(tempMr, tempOsr) + calcBusyTime(prsMr, prsOsr) >= DPS3xx__MAX_BUSYTIME)
 	{
 		return DPS__FAIL_UNFINISHED;
 	}
@@ -553,7 +553,7 @@ int16_t DpsClass::getFIFOvalue(int32_t *value)
 int16_t DpsClass::readByte(uint8_t regAddress)
 {
 	#ifndef DPS_DISABLESPI
-	//delegate to specialized function if Dps310 is connected via SPI
+	//delegate to specialized function if Dps3xx is connected via SPI
 	if (m_SpiI2c == 0)
 	{
 		return readByteSPI(regAddress);
@@ -583,18 +583,18 @@ int16_t DpsClass::readByteSPI(uint8_t regAddress)
 		return DPS__FAIL_UNKNOWN;
 	}
 	//mask regAddress
-	regAddress &= ~DPS310__SPI_RW_MASK;
+	regAddress &= ~DPS3xx__SPI_RW_MASK;
 	//reserve and initialize bus
-	m_spibus->beginTransaction(SPISettings(DPS310__SPI_MAX_FREQ,
+	m_spibus->beginTransaction(SPISettings(DPS3xx__SPI_MAX_FREQ,
 										   MSBFIRST,
 										   SPI_MODE3));
-	//enable ChipSelect for Dps310
+	//enable ChipSelect for Dps3xx
 	digitalWrite(m_chipSelect, LOW);
-	//send address with read command to Dps310
-	m_spibus->transfer(regAddress | DPS310__SPI_READ_CMD);
-	//receive register content from Dps310
+	//send address with read command to Dps3xx
+	m_spibus->transfer(regAddress | DPS3xx__SPI_READ_CMD);
+	//receive register content from Dps3xx
 	uint8_t ret = m_spibus->transfer(0xFF); //send a dummy byte while receiving
-	//disable ChipSelect for Dps310
+	//disable ChipSelect for Dps3xx
 	digitalWrite(m_chipSelect, HIGH);
 	//close current SPI transaction
 	m_spibus->endTransaction();
@@ -617,23 +617,23 @@ int16_t DpsClass::readBlockSPI(RegBlock_t regBlock, uint8_t *buffer)
 		return 0; //0 bytes were read successfully
 	}
 	//mask regAddress
-	regBlock.regAddress &= ~DPS310__SPI_RW_MASK;
+	regBlock.regAddress &= ~DPS3xx__SPI_RW_MASK;
 	//reserve and initialize bus
-	m_spibus->beginTransaction(SPISettings(DPS310__SPI_MAX_FREQ,
+	m_spibus->beginTransaction(SPISettings(DPS3xx__SPI_MAX_FREQ,
 										   MSBFIRST,
 										   SPI_MODE3));
-	//enable ChipSelect for Dps310
+	//enable ChipSelect for Dps3xx
 	digitalWrite(m_chipSelect, LOW);
-	//send address with read command to Dps310
-	m_spibus->transfer(regBlock.regAddress | DPS310__SPI_READ_CMD);
+	//send address with read command to Dps3xx
+	m_spibus->transfer(regBlock.regAddress | DPS3xx__SPI_READ_CMD);
 
-	//receive register contents from Dps310
+	//receive register contents from Dps3xx
 	for (uint8_t count = 0; count < regBlock.length; count++)
 	{
 		buffer[count] = m_spibus->transfer(0xFF); //send a dummy byte while receiving
 	}
 
-	//disable ChipSelect for Dps310
+	//disable ChipSelect for Dps3xx
 	digitalWrite(m_chipSelect, HIGH);
 	//close current SPI transaction
 	m_spibus->endTransaction();
@@ -650,7 +650,7 @@ int16_t DpsClass::writeByte(uint8_t regAddress, uint8_t data)
 int16_t DpsClass::writeByte(uint8_t regAddress, uint8_t data, uint8_t check)
 {
 	#ifndef DPS_DISABLESPI
-	//delegate to specialized function if Dps310 is connected via SPI
+	//delegate to specialized function if Dps3xx is connected via SPI
 	if (m_SpiI2c == 0)
 	{
 		return writeByteSpi(regAddress, data, check);
@@ -687,20 +687,20 @@ int16_t DpsClass::writeByteSpi(uint8_t regAddress, uint8_t data, uint8_t check)
 		return DPS__FAIL_UNKNOWN;
 	}
 	//mask regAddress
-	regAddress &= ~DPS310__SPI_RW_MASK;
+	regAddress &= ~DPS3xx__SPI_RW_MASK;
 	//reserve and initialize bus
-	m_spibus->beginTransaction(SPISettings(DPS310__SPI_MAX_FREQ,
+	m_spibus->beginTransaction(SPISettings(DPS3xx__SPI_MAX_FREQ,
 										   MSBFIRST,
 										   SPI_MODE3));
-	//enable ChipSelect for Dps310
+	//enable ChipSelect for Dps3xx
 	digitalWrite(m_chipSelect, LOW);
-	//send address with read command to Dps310
-	m_spibus->transfer(regAddress | DPS310__SPI_WRITE_CMD);
+	//send address with read command to Dps3xx
+	m_spibus->transfer(regAddress | DPS3xx__SPI_WRITE_CMD);
 
-	//write register content from Dps310
+	//write register content from Dps3xx
 	m_spibus->transfer(data);
 
-	//disable ChipSelect for Dps310
+	//disable ChipSelect for Dps3xx
 	digitalWrite(m_chipSelect, HIGH);
 	//close current SPI transaction
 	m_spibus->endTransaction();
@@ -758,7 +758,7 @@ int16_t DpsClass::readByteBitfield(RegMask_t regMask)
 int16_t DpsClass::readBlock(RegBlock_t regBlock, uint8_t *buffer)
 {
 	#ifndef DPS_DISABLESPI
-	//delegate to specialized function if Dps310 is connected via SPI
+	//delegate to specialized function if Dps3xx is connected via SPI
 	if (m_SpiI2c == 0)
 	{
 		return readBlockSPI(regBlock, buffer);

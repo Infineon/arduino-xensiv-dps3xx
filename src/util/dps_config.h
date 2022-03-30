@@ -3,30 +3,27 @@
 #define DPS_CONSTS_H_
 #include "util/DpsRegister.h"
 
-///////////     DPS310    ///////////
-#define DPS310__PROD_ID 0x00
-#define DPS310__SPI_WRITE_CMD 0x00U
-#define DPS310__SPI_READ_CMD 0x80U
-#define DPS310__SPI_RW_MASK 0x80U
-#define DPS310__SPI_MAX_FREQ 1000000U
+///////////     DPS3xx    ///////////
+#define DPS3xx__PROD_ID 0x00
+#define DPS3xx__SPI_WRITE_CMD 0x00U
+#define DPS3xx__SPI_READ_CMD 0x80U
+#define DPS3xx__SPI_RW_MASK 0x80U
+#define DPS3xx__SPI_MAX_FREQ 1000000U
 
-#define DPS310__OSR_SE 3U
+#define DPS3xx__OSR_SE 3U
 
-// DPS310 has 10 milliseconds of spare time for each synchronous measurement / per second for asynchronous measurements
+// DPS3xx has 10 milliseconds of spare time for each synchronous measurement / per second for asynchronous measurements
 // this is for error prevention on friday-afternoon-products :D
 // you can set it to 0 if you dare, but there is no warranty that it will still work
-#define DPS310__BUSYTIME_FAILSAFE 10U
-#define DPS310__MAX_BUSYTIME ((1000U - DPS310__BUSYTIME_FAILSAFE) * DPS__BUSYTIME_SCALING)
+#define DPS3xx__BUSYTIME_FAILSAFE 10U
+#define DPS3xx__MAX_BUSYTIME ((1000U - DPS3xx__BUSYTIME_FAILSAFE) * DPS__BUSYTIME_SCALING)
 
-#define DPS310__REG_ADR_SPI3W 0x09U
-#define DPS310__REG_CONTENT_SPI3W 0x01U
-
-///////////     DPS422    ///////////
-#define DPS422__PROD_ID 0x0A
+#define DPS3xx__REG_ADR_SPI3W 0x09U
+#define DPS3xx__REG_CONTENT_SPI3W 0x01U
 
 ///////////     common    ///////////
 
-// slave address same for 422 and 310 (to be proved for future sensors)
+// slave address same for 3xx
 #define DPS__FIFO_SIZE 32
 #define DPS__STD_SLAVE_ADDRESS 0x77U
 #define DPS__RESULT_BLOCK_LENGTH 3
@@ -92,7 +89,7 @@ const RegBlock_t registerBlocks[2] = {
 };
 
 /**
- * @brief registers for configuration and flags; these are the same for both 310 and 422, might need to be adapted for future sensors
+ * @brief registers for configuration and flags; these are the same for both 3xx and 422, might need to be adapted for future sensors
  * 
  */
 enum Config_Registers_e

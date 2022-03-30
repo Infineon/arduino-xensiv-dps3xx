@@ -1,10 +1,10 @@
-#ifndef DPS310_H_INCLUDED
-#define DPS310_H_INCLUDED
+#ifndef DPS3xx_H_INCLUDED
+#define DPS3xx_H_INCLUDED
 
 #include "DpsClass.h"
-#include "util/dps310_config.h"
+#include "util/dps3xx_config.h"
 
-class Dps310 : public DpsClass
+class Dps3xx : public DpsClass
 {
 public:
   int16_t getContResults(float *tempBuffer, uint8_t &tempCount, float *prsBuffer, uint8_t &prsCount);
@@ -12,7 +12,7 @@ public:
   /**
    * @brief Set the source of interrupt (FIFO full, measurement values ready)
    * 
-   * @param intr_source Interrupt source as defined by Interrupt_source_310_e
+   * @param intr_source Interrupt source as defined by Interrupt_source_3xx_e
    * @param polarity 
    * @return status code 
    */

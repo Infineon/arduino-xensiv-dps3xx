@@ -1,18 +1,18 @@
-#include <Dps368.h>
+#include <Dps3xx.h>
 
-// Dps368 Opject
-Dps368 Dps368PressureSensor = Dps368();
+// Dps3xx Opject
+Dps3xx Dps3xxPressureSensor = Dps3xx();
 
 void setup()
 {
   Serial.begin(9600);
   while (!Serial);
 
-  //Call begin to initialize Dps368PressureSensor
+  //Call begin to initialize Dps3xxPressureSensor
   //The parameter 0x76 is the bus address. The default address is 0x77 and does not need to be given.
-  //Dps368PressureSensor.begin(Wire, 0x76);
+  //Dps3xxPressureSensor.begin(Wire, 0x76);
   //Use the commented line below instead to use the default I2C address.
-  Dps368PressureSensor.begin(Wire);
+  Dps3xxPressureSensor.begin(Wire);
 
   //temperature measure rate (value from 0 to 7)
   //2^temp_mr temperature measurement results per second
@@ -32,10 +32,10 @@ void setup()
   //temperature and pressure ar measured automatically
   //High precision and hgh measure rates at the same time are not available.
   //Consult Datasheet (or trial and error) for more information
-  int16_t ret = Dps368PressureSensor.startMeasureBothCont(temp_mr, temp_osr, prs_mr, prs_osr);
+  int16_t ret = Dps3xxPressureSensor.startMeasureBothCont(temp_mr, temp_osr, prs_mr, prs_osr);
   //Use one of the commented lines below instead to measure only temperature or pressure
-  //int16_t ret = Dps368PressureSensor.startMeasureTempCont(temp_mr, temp_osr);
-  //int16_t ret = Dps368PressureSensor.startMeasurePressureCont(prs_mr, prs_osr);
+  //int16_t ret = Dps3xxPressureSensor.startMeasureTempCont(temp_mr, temp_osr);
+  //int16_t ret = Dps3xxPressureSensor.startMeasurePressureCont(prs_mr, prs_osr);
 
 
   if (ret != 0)
@@ -61,8 +61,8 @@ void loop()
   //This function writes the results of continuous measurements to the arrays given as parameters
   //The parameters temperatureCount and pressureCount should hold the sizes of the arrays temperature and pressure when the function is called
   //After the end of the function, temperatureCount and pressureCount hold the numbers of values written to the arrays
-  //Note: The Dps368 cannot save more than 32 results. When its result buffer is full, it won't save any new measurement results
-  int16_t ret = Dps368PressureSensor.getContResults(temperature, temperatureCount, pressure, pressureCount);
+  //Note: The Dps3xx cannot save more than 32 results. When its result buffer is full, it won't save any new measurement results
+  int16_t ret = Dps3xxPressureSensor.getContResults(temperature, temperatureCount, pressure, pressureCount);
 
   if (ret != 0)
   {
@@ -93,6 +93,6 @@ void loop()
     }
   }
 
-  //Wait some time, so that the Dps368 can refill its buffer
+  //Wait some time, so that the Dps3xx can refill its buffer
   delay(10000);
 }

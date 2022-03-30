@@ -1,11 +1,11 @@
 {
   "name": "Digital-Pressure-Sensor",
   "keywords": "barometric, pressure, temperature, sensor, shield2go",
-  "description": "Library of Infineon's highly sensitive DPS368 sensor.",
+  "description": "Library of Infineon's highly sensitive DPS3xx sensor.",
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/Infineon/DPS368-Library-Arduino"
+    "url": "https://github.com/Infineon/DPS3xx-Library-Arduino"
   },
   "version": "1.0.6",
   "frameworks": "arduino",
