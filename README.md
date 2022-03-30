@@ -1,10 +1,8 @@
 # DPS3xx Digital Pressure Sensor 
 
-<img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS310_PP.jpg" width=150>
-<img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS310-Pressure-Shield2Go_Top.png" width=300>
+<img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310_PP.jpg" width=150><img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS310_PP.jpg" width=300>
 
-<img src="https://www.infineon.com/export/sites/default/media/products/Small_Signal_Discretes/lowres-DPS368_VLGA-8-2_Combi.tif.png_1864837327.png" width=150>
-<img src="https://github.com/Infineon/Assets/blob/master/Pictures/DPS368-Pressure-Shield2Go_Top.jpg" width=300>
+<img src="https://www.infineon.com/export/sites/default/media/products/Small_Signal_Discretes/lowres-DPS368_VLGA-8-2_Combi.tif.png_1864837327.png" width=150><img src="https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/DPS368-Pressure-Shield2Go_Top.jpg" width=300>
 
 Library of Infineon's highly sensitive [DPS368 sensor](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/) and [DPS310 sensor](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/) for Arduino.
 
@@ -67,9 +65,7 @@ The master branch is always release ready; therefore, you can just download this
 
 Please download this repository from GitHub by clicking on the above button `Clone or download` of this repository:
 
-![Download Library](https://github.com/Infineon/Assets/blob/master/Pictures/Download_Repo.png)
-![Install Library](https://raw.githubusercontent.com/infineon/assets/master/Pictures/Library_Install_ZIP.png)
-
+![Download Library](https://raw.githubusercontent.com/Infineon/Assets/master/Pictures/Download_Repo.png)
 
 To install the DPS3xx pressure sensor library in the Arduino IDE, please go now to **Sketch** > **Include Library** > **Add .ZIP Library...** in the Arduino IDE and navigate to the downloaded .ZIP file of this repository. The library will be installed in your Arduino sketch folder in libraries and you can select as well as include this one to your project under **Sketch** > **Include Library** > **arduino-xensiv-dps3xx**.
 
