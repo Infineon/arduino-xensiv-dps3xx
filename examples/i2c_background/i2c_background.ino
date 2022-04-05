@@ -11,7 +11,7 @@ void setup()
   //Call begin to initialize Dps3xxPressureSensor
   //The parameter 0x76 is the bus address. The default address is 0x77 and does not need to be given.
   //Dps3xxPressureSensor.begin(Wire, 0x76);
-  //Use the commented line below instead to use the default I2C address.
+  //Use the line below instead to use the default I2C address.
   Dps3xxPressureSensor.begin(Wire);
 
   //temperature measure rate (value from 0 to 7)
