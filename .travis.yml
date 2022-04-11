@@ -7,7 +7,7 @@ sudo: required
 cache: pip
         
 branches:
-      - dps368
+      - dps3xx
       - develop
       
       

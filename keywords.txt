@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map For IFX Dps368
+# Syntax Coloring Map For IFX Dps3xx
 #######################################
 
 #######################################
@@ -36,7 +36,7 @@ correctTemp	KEYWORD2
 # Instances (KEYWORD2)
 #######################################
 
-Dps368	KEYWORD2
+Dps3xx	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

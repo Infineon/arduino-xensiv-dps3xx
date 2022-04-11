@@ -1,7 +1,7 @@
-#include <Dps368.h>
+#include <Dps3xx.h>
 
-// Dps368 Opject
-Dps368 Dps368PressureSensor = Dps368();
+// Dps3xx Opject
+Dps3xx Dps3xxPressureSensor = Dps3xx();
 
 void setup()
 {
@@ -15,9 +15,9 @@ void setup()
   while (!Serial);
 
 
-  //Call begin to initialize Dps368PressureSensor
+  //Call begin to initialize Dps3xxPressureSensor
   //The parameter pin_nr is the number of the CS pin on your Microcontroller
-  Dps368PressureSensor.begin(SPI, pin_cs);
+  Dps3xxPressureSensor.begin(SPI, pin_cs);
 
   Serial.println("Init complete!");
 }
@@ -32,14 +32,14 @@ void loop()
   int16_t ret;
   Serial.println();
 
-  //lets the Dps368 perform a Single temperature measurement with the last (or standard) configuration
+  //lets the Dps3xx perform a Single temperature measurement with the last (or standard) configuration
   //The result will be written to the paramerter temperature
-  //ret = Dps368PressureSensor.measureTempOnce(temperature);
+  //ret = Dps3xxPressureSensor.measureTempOnce(temperature);
   //the commented line below does exactly the same as the one above, but you can also config the precision
   //oversampling can be a value from 0 to 7
-  //the Dps 368 will perform 2^oversampling internal temperature measurements and combine them to one result with higher precision
+  //the Dps 3xx will perform 2^oversampling internal temperature measurements and combine them to one result with higher precision
   //measurements with higher precision take more time, consult datasheet for more information
-  ret = Dps368PressureSensor.measureTempOnce(temperature, oversampling);
+  ret = Dps3xxPressureSensor.measureTempOnce(temperature, oversampling);
 
   if (ret != 0)
   {
@@ -56,8 +56,8 @@ void loop()
   }
 
 
-  //ret = Dps368PressureSensor.measurePressureOnce(pressure);
-  ret = Dps368PressureSensor.measurePressureOnce(pressure, oversampling);
+  //ret = Dps3xxPressureSensor.measurePressureOnce(pressure);
+  ret = Dps3xxPressureSensor.measurePressureOnce(pressure, oversampling);
   if (ret != 0)
   {
     //Something went wrong.

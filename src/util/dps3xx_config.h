@@ -1,18 +1,18 @@
-#ifndef DPS368_CONFIG_H_
-#define DPS368_CONFIG_H_
+#ifndef DPS3xx_CONFIG_H_
+#define DPS3xx_CONFIG_H_
 
-#define DPS368_NUM_OF_REGMASKS 16
+#define DPS3xx_NUM_OF_REGMASKS 16
 
-enum Interrupt_source_368_e
+enum Interrupt_source_3xx_e
 {
-    DPS368_NO_INTR = 0,
-    DPS368_PRS_INTR = 1,
-    DPS368_TEMP_INTR = 2,
-    DPS368_BOTH_INTR = 3,
-    DPS368_FIFO_FULL_INTR = 4,
+    DPS3xx_NO_INTR = 0,
+    DPS3xx_PRS_INTR = 1,
+    DPS3xx_TEMP_INTR = 2,
+    DPS3xx_BOTH_INTR = 3,
+    DPS3xx_FIFO_FULL_INTR = 4,
 };
 
-namespace dps368
+namespace dps3xx
 {
 
 enum Registers_e
@@ -30,7 +30,7 @@ enum Registers_e
     INT_SEL,         //interrupt select
 };
 
-const RegMask_t registers[DPS368_NUM_OF_REGMASKS] = {
+const RegMask_t registers[DPS3xx_NUM_OF_REGMASKS] = {
     {0x0D, 0x0F, 0}, // PROD_ID
     {0x0D, 0xF0, 4}, // REV_ID
     {0x07, 0x80, 7}, // TEMP_SENSOR
@@ -45,5 +45,5 @@ const RegMask_t registers[DPS368_NUM_OF_REGMASKS] = {
 };
 
 const RegBlock_t coeffBlock = {0x10, 18};
-} // namespace dps368
+} // namespace dps3xx
 #endif

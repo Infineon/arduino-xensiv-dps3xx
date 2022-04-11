@@ -1,9 +1,9 @@
-#include "Dps310.h"
+#include "Dps3xx.h"
 
 using namespace dps;
-using namespace dps310;
+using namespace dps3xx;
 
-int16_t Dps310::getContResults(float *tempBuffer,
+int16_t Dps3xx::getContResults(float *tempBuffer,
 							   uint8_t &tempCount,
 							   float *prsBuffer,
 							   uint8_t &prsCount)
@@ -12,7 +12,7 @@ int16_t Dps310::getContResults(float *tempBuffer,
 }
 
 #ifndef DPS_DISABLESPI
-int16_t Dps310::setInterruptSources(uint8_t intr_source, uint8_t polarity)
+int16_t Dps3xx::setInterruptSources(uint8_t intr_source, uint8_t polarity)
 {
 	//Interrupts are not supported with 4 Wire SPI
 	if (!m_SpiI2c & !m_threeWire)
@@ -23,12 +23,12 @@ int16_t Dps310::setInterruptSources(uint8_t intr_source, uint8_t polarity)
 }
 #endif
 
-void Dps310::init(void)
+void Dps3xx::init(void)
 {
 	int16_t prodId = readByteBitfield(registers[PROD_ID]);
 	if (prodId < 0)
 	{
-		//Connected device is not a Dps310
+		//Connected device is not a Dps3xx
 		m_initFail = 1U;
 		return;
 	}
@@ -78,7 +78,7 @@ void Dps310::init(void)
 	float trash;
 	measureTempOnce(trash);
 
-	//make sure the DPS310 is in standby after initialization
+	//make sure the Dps3xx is in standby after initialization
 	standby();
 
 	// Fix IC with a fuse bit problem, which lead to a wrong temperature
@@ -86,7 +86,7 @@ void Dps310::init(void)
 	correctTemp();
 }
 
-int16_t Dps310::readcoeffs(void)
+int16_t Dps3xx::readcoeffs(void)
 {
 	// TODO: remove magic number
 	uint8_t buffer[18];
@@ -121,13 +121,13 @@ int16_t Dps310::readcoeffs(void)
 	return DPS__SUCCEEDED;
 }
 
-int16_t Dps310::configTemp(uint8_t tempMr, uint8_t tempOsr)
+int16_t Dps3xx::configTemp(uint8_t tempMr, uint8_t tempOsr)
 {
 	int16_t ret = DpsClass::configTemp(tempMr, tempOsr);
 
 	writeByteBitfield(m_tempSensor, registers[TEMP_SENSOR]);
 	//set TEMP SHIFT ENABLE if oversampling rate higher than eight(2^3)
-	if (tempOsr > DPS310__OSR_SE)
+	if (tempOsr > DPS3xx__OSR_SE)
 	{
 		ret = writeByteBitfield(1U, registers[TEMP_SE]);
 	}
@@ -138,11 +138,11 @@ int16_t Dps310::configTemp(uint8_t tempMr, uint8_t tempOsr)
 	return ret;
 }
 
-int16_t Dps310::configPressure(uint8_t prsMr, uint8_t prsOsr)
+int16_t Dps3xx::configPressure(uint8_t prsMr, uint8_t prsOsr)
 {
 	int16_t ret = DpsClass::configPressure(prsMr, prsOsr);
 	//set PM SHIFT ENABLE if oversampling rate higher than eight(2^3)
-	if (prsOsr > DPS310__OSR_SE)
+	if (prsOsr > DPS3xx__OSR_SE)
 	{
 		ret = writeByteBitfield(1U, registers[PRS_SE]);
 	}
@@ -153,7 +153,7 @@ int16_t Dps310::configPressure(uint8_t prsMr, uint8_t prsOsr)
 	return ret;
 }
 
-float Dps310::calcTemp(int32_t raw)
+float Dps3xx::calcTemp(int32_t raw)
 {
 	float temp = raw;
 
@@ -170,7 +170,7 @@ float Dps310::calcTemp(int32_t raw)
 	return temp;
 }
 
-float Dps310::calcPressure(int32_t raw)
+float Dps3xx::calcPressure(int32_t raw)
 {
 	float prs = raw;
 
@@ -184,7 +184,7 @@ float Dps310::calcPressure(int32_t raw)
 	return prs;
 }
 
-int16_t Dps310::flushFIFO()
+int16_t Dps3xx::flushFIFO()
 {
 	return writeByteBitfield(1U, registers[FIFO_FL]);
 }
