@@ -8,20 +8,31 @@ Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS)**](htt
 
 <table>
     <tr>
+        <td rowspan=2>products</td>
         <td><img src="docs/img/dps310.png" height="150"></td>
         <td><img src="docs/img/dps368.png" height="150"></td>
-        <td><img src="docs/img/dps310-shield2go.png" height="150"></td>
-        <td><img src="docs/img/dps368-shield2go.png" height="150"></td>
-        <td><img src="docs/img/dps310-kit-2go.png" height="150"></td>
-        <td><img src="docs/img/dps368-kit-2go.png" height="150"></td>
     </tr>
     <tr>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/de/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/">XENSIV™ DPS310</a></td>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/de/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps368/">XENSIV™ DPS368</a></td>
+    </tr>
+    <tr>
+        <td rowspan=2>shield2go</td>
+        <td><img src="docs/img/dps310-shield2go.png" height="150"></td>
+        <td><img src="docs/img/dps368-shield2go.png" height="150"></td>
+    </tr>
+    <tr>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/s2go-pressure-dps310/">XENSIV™ DPS310 Shield2Go</a></td>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/s2go-pressure-dps368/">XENSIV™ DPS368 Shield2Go</a></td>
-        <td style="test-align : center"><a href="tbd">XENSIV™ DPS310 Kit 2Go tbd!</a></td>
-        <td style="test-align : center"><a href="tbd">XENSIV™ DPS368 Kit 2Go tbd!</a></td>
+    </tr>
+    <tr>
+       <td rowspan=2>kit2go</td>
+        <td><img src="docs/img/dps310-kit2go.png" height="150"></td>
+        <td><img src="docs/img/dps368-kit2go.png" height="150"></td>
+    </tr>
+    <tr>
+        <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps310_2go/">XENSIV™ DPS310 Kit 2Go tbd!</a></td>
+        <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps368_2go/">XENSIV™ DPS368 Kit 2Go tbd!</a></td>
     </tr>
 </table>
 
