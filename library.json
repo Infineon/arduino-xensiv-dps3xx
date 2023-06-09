@@ -1,5 +1,5 @@
 {
-  "name": "XENSIV DigitalPressureSensor",
+  "name": "XENSIV Digital Pressure Sensor",
   "keywords": "barometric, pressure, temperature, sensor, shield2go",
   "description": "Arduino library for Infineon's Digital Pressure Sensor (DPS3xx) series.",
   "repository":

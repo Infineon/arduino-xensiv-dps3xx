@@ -1,7 +1,7 @@
 /**
  * Arduino library to control Dps3xx
  *
- * "Dps3xx" represents Infineon's high-sensetive pressure and temperature sensor.
+ * "Dps3xx" represents Infineon's high-sensitive pressure and temperature sensor.
  * It measures in ranges of 300 - 1200 hPa and -40 and 85 °C.
  * The sensor can be connected via SPI or I2C.
  * It is able to perform single measurements
