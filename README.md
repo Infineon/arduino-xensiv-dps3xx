@@ -31,8 +31,8 @@ Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS)**](htt
         <td><img src="docs/img/dps368-kit2go.png" height="150"></td>
     </tr>
     <tr>
-        <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps310_2go/">XENSIV™ DPS310 Kit 2Go tbd!</a></td>
-        <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps368_2go/">XENSIV™ DPS368 Kit 2Go tbd!</a></td>
+        <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps310_2go/">XENSIV™ DPS310 Kit 2Go</a></td>
+        <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps368_2go/">XENSIV™ DPS368 Kit 2Go</a></td>
     </tr>
 </table>
 
