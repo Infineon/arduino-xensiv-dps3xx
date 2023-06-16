@@ -9,8 +9,8 @@ Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS3xx)**](
 <table>
     <tr>
         <td rowspan=2>Products</td>
-        <td><img src="docs/img/dps310.png" height="150"></td>
-        <td><img src="docs/img/dps368.png" height="150"></td>
+        <td><img src="docs/img/dps310.png" height="80"></td>
+        <td><img src="docs/img/dps368.png" height="80"></td>
     </tr>
     <tr>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/de/product/sensor/pressure-sensors/pressure-sensors-for-iot/dps310/">XENSIV™ DPS310</a></td>
@@ -18,8 +18,8 @@ Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS3xx)**](
     </tr>
     <tr>
         <td rowspan=2>Shield2Go</td>
-        <td><img src="docs/img/dps310-shield2go.png" height="150"></td>
-        <td><img src="docs/img/dps368-shield2go.png" height="150"></td>
+        <td><img src="docs/img/dps310-shield2go.png" height="80"></td>
+        <td><img src="docs/img/dps368-shield2go.png" height="80"></td>
     </tr>
     <tr>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/s2go-pressure-dps310/">XENSIV™ DPS310 Shield2Go</a></td>
@@ -27,8 +27,8 @@ Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS3xx)**](
     </tr>
     <tr>
        <td rowspan=2>Kit 2Go</td>
-        <td><img src="docs/img/dps310-kit2go.png" height="150"></td>
-        <td><img src="docs/img/dps368-kit2go.png" height="150"></td>
+        <td><img src="docs/img/dps310-kit2go.png" height="80"></td>
+        <td><img src="docs/img/dps368-kit2go.png" height="80"></td>
     </tr>
     <tr>
         <td style="test-align : center"><a href="https://www.infineon.com/cms/en/product/evaluation-boards/kit_dps310_2go/">XENSIV™ DPS310 Kit 2Go</a></td>
