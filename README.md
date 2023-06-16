@@ -39,7 +39,7 @@ Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS3xx)**](
 ## Getting Started
 
 ### Installation
-To install this library in the Arduino IDE, please go to **Sketch** > **Include Library** > **Manage Libraries...** and search for the `DigitalPressureSensor` library by `Infineon Technologies` in the Arduino library manager.
+To install this library in the Arduino IDE, please go to **Sketch** > **Include Library** > **Manage Libraries...** and search for the `XENSIV Digital Pressure Sensor` library by `Infineon Technologies` in the Arduino library manager.
 
 ### Usage
 Please see the example sketches in the `/examples` directory in this repository to learn more about the usage of the library. Especially, take care of the respective SPI and I²C configuration of the sensor. You can find more information in the [Wiki](https://github.com/Infineon/arduino-xensiv-dps3xx/wiki).
