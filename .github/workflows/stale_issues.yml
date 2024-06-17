@@ -1,22 +1,8 @@
-name: Close inactive issues
+name: 'Close stale issues/PRs'
 on:
   schedule:
-    - cron: "10 12 * * *"
+    - cron: "50 14 */2 * *"
 
 jobs:
-  close-issues:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-    steps:
-      - uses: actions/stale@v5
-        with:
-          days-before-issue-stale: 42
-          days-before-issue-close: 14
-          stale-issue-label: "stale"
-          stale-issue-message: "This issue is stale because it has been open for more than 6 weeks with no activity. Please comment to this issue if it's still relevant."
-          close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale. Please re-open the issue if it's still relevant."
-          days-before-pr-stale: -1
-          days-before-pr-close: -1
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+  call-workflow:
+    uses: Infineon/workflows/.github/workflows/epe_stale_issues.yml@master
