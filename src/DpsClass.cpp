@@ -567,7 +567,7 @@ int16_t DpsClass::readByte(uint8_t regAddress)
     m_i2cbus->write(regAddress);
     m_i2cbus->endTransmission(false);
     // request 1 byte from slave
-    if (m_i2cbus->requestFrom(m_slaveAddress, 1U, 1U) > 0)
+    if (m_i2cbus->requestFrom(m_slaveAddress, (uint8_t)1, (uint8_t)1) > 0)
     {
         return m_i2cbus->read(); // return this byte on success
     }
@@ -777,7 +777,7 @@ int16_t DpsClass::readBlock(RegBlock_t regBlock, uint8_t *buffer)
     m_i2cbus->write(regBlock.regAddress);
     m_i2cbus->endTransmission(false);
     // request length bytes from slave
-    int16_t ret = m_i2cbus->requestFrom(m_slaveAddress, regBlock.length, 1U);
+    int16_t ret = m_i2cbus->requestFrom(m_slaveAddress, (uint8_t)regBlock.length, (uint8_t)1);
     // read all received bytes to buffer
     for (int16_t count = 0; count < ret; count++)
     {

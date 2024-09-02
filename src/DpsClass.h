@@ -14,12 +14,13 @@
 #ifndef DPSCLASS_H_INCLUDED
 #define DPSCLASS_H_INCLUDED
 
+#include <Arduino.h>
+#define DPS_DISABLESPI
 #ifndef DPS_DISABLESPI
 #include <SPI.h>
 #endif
 #include <Wire.h>
 #include "util/dps_config.h"
-#include <Arduino.h>
 
 class DpsClass
 {
