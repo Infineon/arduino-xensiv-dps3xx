@@ -15,7 +15,6 @@
 #define DPSCLASS_H_INCLUDED
 
 #include <Arduino.h>
-#define DPS_DISABLESPI
 #ifndef DPS_DISABLESPI
 #include <SPI.h>
 #endif
