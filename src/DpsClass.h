@@ -14,6 +14,10 @@
 #ifndef DPSCLASS_H_INCLUDED
 #define DPSCLASS_H_INCLUDED
 
+#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_PSOC6)
+#define DPS_DISABLESPI
+#endif
+
 #include <Arduino.h>
 #ifndef DPS_DISABLESPI
 #include <SPI.h>
