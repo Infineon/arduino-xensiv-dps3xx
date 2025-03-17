@@ -16,7 +16,8 @@
 
 #include <Arduino.h>
 
-#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_PSOC6)
+// Disable SPI for currently not supported platforms.
+#if defined(ARDUINO_ARCH_SAMD) || defined(ARDUINO_ARCH_PSOC6) || defined(ARDUINO_ARCH_RENESAS)
 #define DPS_DISABLESPI
 #endif
 
