@@ -59,24 +59,35 @@ void DpsClass::begin(SPIClass &bus, int32_t chipSelect, uint8_t threeWire)
 
     // Init bus
     m_spibus->begin();
-    m_spibus->setDataMode(SPI_MODE3);
+
+    // Configure the SPI settings for the device
+    SPISettings settings(DPS3xx__SPI_MAX_FREQ, MSBFIRST, SPI_MODE3);
+
+    // Start an SPI transaction to configure the device
+    m_spibus->beginTransaction(settings);
 
     pinMode(m_chipSelect, OUTPUT);
     digitalWrite(m_chipSelect, HIGH);
 
     delay(50); // startup time of Dps3xx
 
-    // switch to 3-wire mode if necessary
+    // End the SPI transaction
+    m_spibus->endTransaction();
+
+    // Switch to 3-wire mode if necessary
     // do not use writeByteBitfield or check option to set SPI mode!
     // Reading is not possible until SPI-mode is valid
     if (threeWire)
     {
         m_threeWire = 1U;
+        m_spibus->beginTransaction(settings);  // Ensure SPI transaction for 3-wire mode
         if (writeByte(DPS3xx__REG_ADR_SPI3W, DPS3xx__REG_CONTENT_SPI3W))
         {
+            m_spibus->endTransaction();       // End transaction
             m_initFail = 1U;
             return;
         }
+        m_spibus->endTransaction();           // End transaction
     }
 
     init();
