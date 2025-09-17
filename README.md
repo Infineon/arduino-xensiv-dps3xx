@@ -1,10 +1,11 @@
-[![Compile examples](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/compile_examples.yml/badge.svg)](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/compile_examples.yml)
-
 # XENSIV™ Digital Pressure Sensor Arduino Library
+
+[![Compile examples](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/compile_examples.yml/badge.svg)](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/compile_examples.yml)
+[![Check links](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/check_links.yml/badge.svg)](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/check_links.yml)
 
 Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS3xx)**](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/).
 
-<img src="https://www.infineon.com/export/sites/default/media/products/Small_Signal_Discretes/lowres-DPS368_VLGA-8-2_Combi.tif.png_1864837327.png" width=200>
+<img src="/docs/img/dps368.png" width=200>
 
 ## Supported Products
 
