@@ -1,7 +1,7 @@
+# XENSIV™ Digital Pressure Sensor Arduino Library
+
 [![Compile examples](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/compile_examples.yml/badge.svg)](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/compile_examples.yml)
 [![Check links](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/check_links.yml/badge.svg)](https://github.com/Infineon/arduino-xensiv-dps3xx/actions/workflows/check_links.yml)
-
-# XENSIV™ Digital Pressure Sensor Arduino Library
 
 Arduino library of Infineon's [**XENSIV™ Digital Pressure Sensors (DPS3xx)**](https://www.infineon.com/cms/en/product/sensor/pressure-sensors/pressure-sensors-for-iot/).
 
