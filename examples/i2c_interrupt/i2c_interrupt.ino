@@ -9,6 +9,7 @@
 // Dps3xx Object
 Dps3xx Dps3xxPressureSensor = Dps3xx();
 void onFifoFull();
+bool data_ready = false;
 
 void setup()
 {
@@ -17,12 +18,18 @@ void setup()
     ;
 
   /*
+   * Set i2c pins
+   * Example:
+   * Wire.setSDA(20);
+   * Wire.setSCL(21);
+   */
+  
+  /*
    * Call begin to initialize Dps3xxPressureSensor
    * The parameter 0x76 is the bus address. The default address is 0x77 and does not need to be given.
    * Dps3xxPressureSensor.begin(Wire, 0x76);
    * Use the commented line below instead to use the default I2C address.
    */
-
   Dps3xxPressureSensor.begin(Wire);
   int16_t val = Dps3xxPressureSensor.setInterruptSources(4, 0);
   // clear interrupt flag by reading
@@ -32,9 +39,9 @@ void setup()
    * initialization of Interrupt for Controller unit
    * SDO pin of Dps3xx has to be connected with interrupt pin
    */
-  int16_t interruptPin = 9;
+  int16_t interruptPin = 15;
   pinMode(interruptPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), onFifoFull, RISING);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), onFifoFull, FALLING);
 
   /*
    * temperature measure rate (value from 0 to 7)
@@ -83,13 +90,23 @@ void setup()
 
 void loop()
 {
+  /*
+   * Only execute code in the loop, if the interrupt was called
+   */
+  if(!data_ready) return;
+  data_ready = false;
+  
   uint8_t pressureCount = 20;
   float pressure[pressureCount];
   uint8_t temperatureCount = 20;
   float temperature[temperatureCount];
 
   int16_t val = Dps3xxPressureSensor.getIntStatusFifoFull();
-
+  if (val < 0) {
+    Serial.println("Failed: Fifo not full");
+    return;
+  }
+  
   /*
    * This function writes the results of continuous measurements to the arrays given as parameters
    * The parameters temperatureCount and pressureCount should hold the sizes of the arrays temperature and pressure when the function is called
@@ -100,15 +117,11 @@ void loop()
 
   if (ret != 0)
   {
-    Serial.println();
-    Serial.println();
     Serial.print("FAIL! ret = ");
     Serial.println(ret);
   }
   else
   {
-    Serial.println();
-    Serial.println();
     Serial.print(temperatureCount);
     Serial.println(" temperature values found: ");
     for (int16_t i = 0; i < temperatureCount; i++)
@@ -125,15 +138,16 @@ void loop()
       Serial.print(pressure[i]);
       Serial.println(" Pascal");
     }
+    Serial.println();
+    Serial.println();
   }
 
   // Wait some time, so that the Dps3xx can refill its buffer
-  delay(10000);
 }
 
 void onFifoFull()
 {
   // message for debugging
   Serial.println("Interrupt handler called");
-  Dps3xxPressureSensor.getIntStatusFifoFull();
+  data_ready = true;
 }
